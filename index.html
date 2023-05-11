@@ -1,0 +1,503 @@
+﻿<!doctype html>
+<html lang="EN">
+
+  <head>
+      <meta charset="utf-8">
+      <title>Game Title</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/png" href="favicon.png">
+
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/ui.css">
+
+      <link rel="stylesheet" href="css/start.css">
+      <link rel="stylesheet" href="css/day.css">
+      <link rel="stylesheet" href="css/night.css">
+
+      <link rel="stylesheet" href="css/controls.css">
+      <link rel="stylesheet" href="css/objects.css">
+      <link rel="stylesheet" href="css/craft.css">
+      <link rel="stylesheet" href="css/hero.css">
+
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet"> 
+  </head>
+
+  <!-- 
+
+    CREDITS:
+
+  -->
+  <body>
+
+    <main id="start" class="switch__dialog active">
+      <div class="wrapper">
+        <p>
+          Earth has been hit by a devastating magnetic solar storm that occurs only every few hundred years.
+        </p>
+        <p>
+          All electrical and electronic equipment has been destroyed, the infrastructure is unusable for decades, and human society teeters on the precipice of its existence.
+        </p>
+        <p>
+          A couple has managed to escape from their city before all order has collapsed. Stranded in the wilderness, they must gather enough supplies and build a suitable shelter until winter.
+        </p>
+        <p>
+          Unfortunately, they lack the necessary knowledge and tools. Both can only be found in a nearby town - a race against time and danger begins...
+        </p>
+        <div class="switch__options">
+          <a href="#" id="start-game">Start Game</a> 
+        </div>
+        <p style="margin-top: 30px; font-size: 30px;">
+          Hint: Press F11 on your keyboard for Full Screen gameplay
+        </p>
+      </div>
+    </main>
+
+    <main id="day">
+      <div id="win-game" class="switch__dialog">
+        <div class="wrapper">
+          <h2>You win the game!</h2>
+          <br>
+          <h2>Congratulations and thank you so much for playing.</h2>
+          <p>Humane Tiger and Isabel Woodings</p>
+          <br><br>
+          <div class="switch__options">
+            <a href="#" onclick="location.reload();">Go to Startscreen</a>
+          </div>
+        </div>
+      </div>
+      <div id="loose-game" class="switch__dialog">
+        <div class="wrapper">
+          <h2>Winter has arrived.</h2>
+          <br>
+          <h2>It's getting very cold out here.</h2>
+          <p>Unfortunately you haven't managed to prepare enough for the harsh next months.</p>
+          <br>
+          <p>Nevertheless, thank you so much for taking your time and playing our game.</p>
+          <br><br>
+          <div class="switch__options">
+            <a href="#" onclick="location.reload();">Go to Startscreen</a>
+          </div>
+        </div>
+      </div>
+      <div id="night-switch" class="switch__dialog">
+        <div class="wrapper">
+          <h2>The night is here.</h2>
+          <h3>Time for another looting...</h3>
+          <div class="characters" class="switch__options">
+            <img src="img/heros/victor-big.png" class="victor" width="200" height="auto">
+            <img src="img/heros/christin-big.png" class="christin" width="200" height="auto">
+          </div>
+          <p>Choose a character or <a href="#no" class="switch--no">skip looting</a></p>
+        </div>
+      </div>
+      <div class="darkness" id="darkness-1"></div>
+      <div class="darkness" id="darkness-2"></div>
+      <section class="day__content">
+        <section class="winning__time">
+          <div class="winning__label">Day <span id="gametime-days">1</span></div>
+          <div class="time__progress">
+            <span id="gametime-hours">1</span>
+          </div>
+        </section>
+        <section class="winning__winter">
+          <div class="winning__label">Winter is coming</div>
+          <div class="winning__progress">
+            <div class="progress__bar" id="winter-is-coming"></div>
+          </div>
+        </section>
+        <!--
+        <section class="winning__speed">
+          <div class="winning__label">
+            <a href="#">►</a>
+            <a href="#">►►</a>
+            <a href="#">►►►</a>
+          </div>
+          <div class="time__progress">
+            <span id="gametime-hours">1x</span>
+          </div>
+        </section>
+        -->
+        <section class="winning__building">
+          <div class="winning__label">Buildings (<span id="buildings-total-text"></span>/4)</div>
+          <div class="winning__progress">
+            <div class="progress__bar" id="buildings-total"></div>
+          </div>
+        </section>
+        <section class="winning__stockpile">
+          <div class="winning__label">Stockpile (<span id="stockpile-total-text"></span>%)</div>
+          <div class="winning__progress">
+            <div class="progress__bar" id="stockpile-total"></div>
+          </div>
+        </section>
+        <section class="controls__top">
+          <!--
+          <div class="equipment">
+            <div class="equipment__owner"></div>
+            <div class="equipment__slot slot--empty slot-back">
+              <p class="slot__text">Back</p>
+            </div>
+            <div class="equipment__slot slot--empty slot-left">
+              <p class="slot__text">Left Hand</p>
+            </div>
+            <div class="equipment__slot slot--empty slot-right">
+              <p class="slot__text">Right Hand</p>
+            </div>
+            <div class="equipment__slot slot--empty slot-pocket">
+              <p class="slot__text">Pocket</p>
+            </div>
+          </div>
+          -->
+        </section>
+        <div id="campfire-ready" class="is--hidden">
+          <img src="img/environment/fireplace.png" width="100%" height="auto">
+        </div>
+        <div id="fishJetty-ready" class="fish-jetty-ready is--hidden">
+          <img src="img/environment/fishJetty.png" width="100%" height="auto">
+        </div>
+        <div id="workbench-ready" class="workbench-ready is--hidden">
+          <img src="img/environment/workbench.png" width="100%" height="auto">
+        </div>
+        <div id="house-ready" class="is--hidden">
+          <img src="img/environment/house.png" width="100%" height="auto">
+        </div>
+        <div class="craft craft--2-slots" id="campfire">
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-branch is--hidden">
+            <img class="icon" src="img/items/branch.png">
+            <span class="amount"><span id="campfire-branch"></span>/6</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-stones is--hidden">
+            <img class="icon" src="img/items/stones.png">
+            <span class="amount"><span id="campfire-stones"></span>/4</span>
+          </div>
+        </div>
+        <div class="craft craft--3-slots" id="fishJetty">
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-log is--hidden">
+            <img class="icon" src="img/items/log.png">
+            <span class="amount"><span id="fishJetty-log"></span>/8</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-plank is--hidden">
+            <img class="icon" src="img/items/plank.png">
+            <span class="amount"><span id="fishJetty-plank"></span>/4</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-nails is--hidden">
+            <img class="icon" src="img/items/nails.png">
+            <span class="amount"><span id="fishJetty-nails"></span>/2</span>
+          </div>
+        </div>
+        <div class="craft craft--4-slots" id="workbench">
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-log is--hidden">
+            <img class="icon" src="img/items/log.png">
+            <span class="amount"><span id="workbench-log"></span>/6</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-rock is--hidden">
+            <img class="icon" src="img/items/rock.png">
+            <span class="amount"><span id="workbench-rock"></span>/2</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-nails is--hidden">
+            <img class="icon" src="img/items/nails.png">
+            <span class="amount"><span id="workbench-nails"></span>/2</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-tape is--hidden">
+            <img class="icon" src="img/items/tape.png">
+            <span class="amount"><span id="workbench-tape"></span>/1</span>
+          </div>
+        </div>
+        <div class="craft craft--6-slots" id="house">
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-branch is--hidden">
+            <img class="icon" src="img/items/branch.png">
+            <span class="amount"><span id="house-branch"></span>/20</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-log is--hidden">
+            <img class="icon" src="img/items/log.png">
+            <span class="amount"><span id="house-log"></span>/12</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-rock is--hidden">
+            <img class="icon" src="img/items/rock.png">
+            <span class="amount"><span id="house-rock"></span>/18</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-wood is--hidden">
+            <img class="icon" src="img/items/wood.png">
+            <span class="amount"><span id="house-wood"></span>/15</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-plank is--hidden">
+            <img class="icon" src="img/items/plank.png">
+            <span class="amount"><span id="house-plank"></span>/10</span>
+          </div>
+          <div class="craft__slot slot--unknown"></div>
+          <div class="craft__slot slot--reciepe item-nails is--hidden">
+            <img class="icon" src="img/items/nails.png">
+            <span class="amount"><span id="house-nails"></span>/4</span>
+          </div>
+        </div>
+        <img class="exchange" src="img/environment/inventar-store.png" width="180" height="auto">
+        <img class="crate" src="img/environment/crate-shadow.png" width="130" height="auto">
+        <img class="special-1" src="img/environment/special-1.png" width="133" height="141">
+        <section class="controls__bottom">
+          <div class="equipment">
+            <div class="equipment__owner"></div>
+            <div class="equipment__slot slot--empty slot-back">
+              <p class="slot__text">Back</p>
+            </div>
+            <div class="equipment__slot slot--empty slot-left">
+              <p class="slot__text">Left Hand</p>
+            </div>
+            <div class="equipment__slot slot--empty slot-right">
+              <p class="slot__text">Right Hand</p>
+            </div>
+            <div class="equipment__slot slot--empty slot-pocket">
+              <p class="slot__text">Pocket</p>
+            </div>
+          </div>
+          <div class="inventar">
+            <div class="inventar__slot slot--empty slot-inv1"></div>
+            <div class="inventar__slot slot--empty slot-inv2"></div>
+            <div class="inventar__slot slot--empty slot-inv3"></div>
+            <div class="inventar__slot slot--locked slot-inv4"></div>
+            <div class="inventar__slot slot--locked slot-inv5"></div>
+            <div class="inventar__slot slot--locked slot-inv6"></div>
+          </div>
+        </section>
+      </section>
+      <section class="day__objects">
+        <div class="environment-tall tree tree-1">
+          <img src="img/environment/tree-shadow.png" class="shadow" width="230" height="190">
+          <img src="img/environment/tree-1.png" class="icon" width="188" height="300">
+        </div>
+        <div class="environment-tall tree tree-1a">
+          <img src="img/environment/tree-shadow.png" class="shadow" width="230" height="190">
+          <img src="img/environment/tree-1.png" class="icon" width="188" height="300">
+        </div>
+        <div class="environment-tall tree tree-2">
+          <img src="img/environment/tree-shadow.png" class="shadow" width="230" height="190">
+          <img src="img/environment/tree-2a.png" class="icon" width="200" height="300">
+        </div>
+        <div class="environment-tall tree tree-3">
+          <img src="img/neutrals/environment-chip.png" class="background" width="170" height="83">
+          <img src="img/environment/tree-shadow.png" class="shadow" width="260" height="220">
+          <img src="img/environment/tree-3.png" class="icon" width="188" height="300">
+        </div>
+        <div class="environment-tall rock-large">
+          <img src="img/neutrals/environment-chip.png" class="background" width="170" height="83">
+          <img src="img/environment/rock-large.png" class="icon" width="188" height="300">
+        </div>
+        <div class="environment-small rock-small">
+          <img src="img/neutrals/environment-chip.png" class="background" width="170" height="83">
+          <img src="img/environment/rock-small.png" class="icon" width="220" height="200">
+        </div>
+        <div class="environment-small bush bush-1">
+          <img src="img/neutrals/environment-chip.png" class="background" width="170" height="83">
+          <img src="img/environment/bush-shadow.png" class="shadow" width="220" height="180">
+          <img src="img/environment/bush-1.png" class="icon" width="220" height="200">
+        </div>
+        <div class="environment-small bush bush-1a">
+          <img src="img/environment/bush-shadow.png" class="shadow" width="215" height="180">
+          <img src="img/environment/bush-1.png" class="icon" width="220" height="200">
+        </div>
+        <div class="environment-small bush bush-2">
+          <img src="img/environment/bush-shadow.png" class="shadow" width="220" height="170">
+          <img src="img/environment/bush-2.png" class="icon" width="220" height="200">
+        </div>
+        <div class="environment-small bush bush-2a">
+          <img src="img/environment/bush-shadow.png" class="shadow" width="210" height="170">
+          <img src="img/environment/bush-2.png" class="icon" width="220" height="200">
+        </div>
+        <div class="environment-small bush bush-3">
+          <img src="img/neutrals/environment-chip.png" class="background" width="170" height="83">
+          <img src="img/environment/bush-shadow.png" class="shadow" width="215" height="180">
+          <img src="img/environment/bush-3.png" class="icon" width="220" height="200">
+        </div>
+        <div class="environment-small bush bush-3a">
+          <img src="img/environment/bush-shadow.png" class="shadow" width="225" height="160">
+          <img src="img/environment/bush-3.png" class="icon" width="220" height="200">
+        </div>
+        <div class="environment-small signpost">
+          <img src="img/environment/signpost.png" class="icon" width="100" height="auto">
+        </div>
+        <!-- BOOK ITEMS -->
+        <div class="item notebook-camp">
+          <div class="shadow"></div>
+          <img src="img/neutrals/item-chip.png" class="background" width="82" height="82">
+          <img src="img/items/notebook-camp.png" class="icon" width="auto" height="auto">
+        </div>
+        <div class="item notebook-fish">
+          <div class="shadow"></div>
+          <img src="img/neutrals/item-chip.png" class="background" width="82" height="82">
+          <img src="img/items/notebook-fish.png" class="icon" width="auto" height="auto">
+        </div>
+        <div class="item notebook-workbench">
+          <div class="shadow"></div>
+          <img src="img/neutrals/item-chip.png" class="background" width="82" height="82">
+          <img src="img/items/notebook-workbench.png" class="icon" width="auto" height="auto">
+        </div>
+        <div class="item notebook-home">
+          <div class="shadow"></div>
+          <img src="img/neutrals/item-chip.png" class="background" width="82" height="82">
+          <img src="img/items/notebook-home.png" class="icon" width="auto" height="auto">
+        </div>
+        <!-- BOOKS -->
+        <div class="notebook open-notebook-camp">
+          <img src="img/notebooks/notebook-camp.png" class="icon" width="679" height="auto">
+        </div>
+        <div class="notebook open-notebook-fish">
+          <img src="img/notebooks/notebook-fish.png" class="icon" width="679" height="auto">
+        </div>
+        <div class="notebook open-notebook-workbench">
+          <img src="img/notebooks/notebook-workbench.png" class="icon" width="679" height="auto">
+        </div>
+        <div class="notebook open-notebook-home">
+          <img src="img/notebooks/notebook-home.png" class="icon" width="679" height="auto">
+        </div>
+      </section>
+    </main>
+
+    <main id="night" class="is--hidden">
+      <div class="fow" style="top: -50px; left: -480px;"><div class="fow-inner"></div></div>
+      <div class="collision-indicator"></div>
+      <div class="hero hero-victor" style="top: 500px; left: 50px;">
+        <div class="shadow"></div>
+        <img src="img/neutrals/hero-chip.png" class="background" width="100%" height="auto">
+        <img src="img/heros/victor.png" class="icon victor" width="100%" height="auto">
+        <img src="img/heros/christin.png" class="icon christin" width="100%" height="auto">
+        <div class="bubble is--hidden"><div class="text">...</div></div>
+      </div>
+      <section class="version-1">
+        <div class="building-1">
+          <img src="img/buildings/1-1.png" class="cover left" width="101" height="302">
+          <img src="img/buildings/1-2.png" class="cover right" width="465" height="171">
+        </div>
+        <div class="building-2">
+          <img src="img/buildings/2.png" class="cover" width="138" height="244">
+        </div>
+        <div class="building-3">
+          <img src="img/buildings/3.png" class="cover" width="279" height="197">
+        </div>
+        <div class="building-4">
+          <img src="img/buildings/4.png" class="cover" width="265" height="182">
+        </div>
+        <div class="building-5">
+          <img src="img/buildings/5-1.png" class="cover left" width="424" height="154">
+          <img src="img/buildings/5-2.png" class="cover right" width="155" height="241">
+        </div>
+        <div class="building-6">
+          <img src="img/environment/bush-1.png" class="cover" width="220" height="200">
+        </div>
+        <div class="building-7">
+          <img src="img/environment/bush-2.png" class="cover" width="220" height="200">
+        </div>
+        <img class="loot" src="img/environment/crate.png" width="120" height="auto">
+        <img class="go-home" src="img/environment/signpost.png" width="130" height="auto">
+        <div class="enemie-1">
+          <img src="img/enemies/radar.png" class="radar">
+          <img src="img/enemies/enemie-1.png" class="enemie" width="100" height="auto">
+        </div>
+        <div class="enemie-2">
+          <img src="img/enemies/radar.png" class="radar">
+          <img src="img/enemies/enemie-2.png" class="enemie" width="100" height="auto">
+        </div>
+        <div class="enemie-3">
+          <img src="img/enemies/radar.png" class="radar">
+          <img src="img/enemies/enemie-3.png" class="enemie" width="100" height="auto">
+        </div>
+        <div class="enemie-4">
+          <img src="img/enemies/radar.png" class="radar">
+          <img src="img/enemies/enemie-3.png" class="enemie" width="100" height="auto">
+        </div>
+      </section>
+      <section class="controls__bottom">
+        <div class="inventar">
+          <div class="inventar__slot slot--empty slot-inv1"></div>
+          <div class="inventar__slot slot--empty slot-inv2"></div>
+          <div class="inventar__slot slot--empty slot-inv3"></div>
+          <div class="inventar__slot slot--locked slot-inv4"></div>
+          <div class="inventar__slot slot--locked slot-inv5"></div>
+          <div class="inventar__slot slot--locked slot-inv6"></div>
+        </div>
+      </section>
+      <div id="tutorial" class="switch__dialog active">
+        <div class="wrapper">
+          <h2>Please note!</h2>
+          <p>
+            In town things are little bit different:
+          </p>
+          <br>
+          <p>
+            You move your character with keyboard W / A / S / D.
+          </p>
+          <p>
+            Avoid enemies by staying out of their field of view or by sneaking behind buildings and bushes.
+          </p>
+          <p>
+            Find the wooden crate. Around this crate some loot is scattered. Drag what you want into your inventory.
+            (Better look around before making your choices)
+          </p>
+          <br>
+          <p>
+            Go back to the signpost when you want to leave the town.
+          </p>
+          <br>
+          <div class="switch__options">
+            <a href="#yes" class="switch--yes">Alright. Let's go!</a>
+          </div>
+        </div>
+      </div>
+      <div id="day-switch" class="switch__dialog">
+        <div class="wrapper">
+          <h3>Want to go back?</h3>
+          <div class="switch__options">
+            <a href="#yes" class="switch--yes">Yes</a>
+            <a href="#no" class="switch--no">No</a>
+          </div>
+        </div>
+      </div>
+      <div id="night-collision" class="switch__dialog">
+        <div class="wrapper">
+          <h3>You were caught.</h3>
+          <p>You lost all your loot and come back with empty hands.</p>
+          <div class="switch__options">
+            <a href="#yes" class="switch--yes">Okay</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="all-audio">
+      <!-- MUSIC -->
+      <audio class="music-day-isabel_woodings" src="sound/music/day-isabel_woodings.mp3" preload loop></audio>
+      <audio class="music-night-1" src="sound/music/night-1.mp3" preload loop></audio>
+      <audio class="music-night-2" src="sound/music/night-2.mp3" preload loop></audio>
+      <!-- SFX -->
+      <audio class="sfx-nope" src="sound/fx/nope.mp3" preload></audio>
+      <audio class="sfx-click" src="sound/fx/click.mp3" preload></audio>
+      <audio class="sfx-pick" src="sound/fx/pick-up.mp3" preload></audio>
+      <audio class="sfx-break-twig" src="sound/fx/break-twig.mp3" preload></audio>
+      <audio class="sfx-chop-rock" src="sound/fx/chop-rock.mp3" preload></audio>
+      <audio class="sfx-chop-wood" src="sound/fx/chop-wood.mp3" preload></audio>
+      <audio class="sfx-collect-stones" src="sound/fx/collect-stones.mp3" preload></audio>
+      <audio class="sfx-craft" src="sound/fx/craft.mp3" preload></audio>
+      <audio class="sfx-open-book" src="sound/fx/open-book.mp3" preload></audio>
+      <audio class="sfx-catch-fish" src="sound/fx/catch-fish.mp3" preload></audio>
+      <audio class="sfx-build-something" src="sound/fx/build-something.mp3" preload></audio>
+      <audio class="sfx-wooden-box" src="sound/fx/wooden-box.mp3" preload></audio>
+    </div>
+  
+    <script src="js/init.js" type="module"></script>
+    
+  </body>
+
+</html>

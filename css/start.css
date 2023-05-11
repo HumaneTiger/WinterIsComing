@@ -1,0 +1,22 @@
+#start.switch__dialog {
+  background: white;
+  color: black;
+  font-size: 40px;
+}
+
+#start .wrapper {
+  top: 45%;
+  width: 70vw;
+}
+
+#start.switch__dialog p {
+  margin-bottom: 35px;
+}
+
+#start .switch__options {
+  padding-top: 30px;
+}
+
+#start.switch__dialog a {
+  color: black;
+}

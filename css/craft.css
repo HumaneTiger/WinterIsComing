@@ -1,0 +1,88 @@
+.craft {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.craft__slot {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+}
+
+.craft__slot img.icon {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  z-index: 2;
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.craft__slot span.amount {
+  position: absolute;
+  right: -10px;
+  bottom: -12px;
+  padding: 8px 8px 4px;
+  border: 1px black solid;
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 0.5em;
+  vertical-align: top;
+  background-color: white;
+  z-index: 3;
+}
+
+.craft--2-slots {
+  position: absolute;
+  top: 430px;
+  left: 840px;
+  width: 188px;
+  height: 104px;
+  padding: 13px;
+  background-image: url(../img/neutrals/craft-2-slots.png);
+  background-repeat: no-repeat;
+}
+
+.craft--3-slots {
+  position: absolute;
+  top: 710px;
+  left: 1350px;
+  width: 284px;
+  height: 110px;
+  padding: 16px 20px;
+  background-image: url(../img/neutrals/craft-3-slots.png);
+  background-repeat: no-repeat;
+}
+
+.craft--4-slots {
+  position: absolute;
+  top: 480px;
+  left: 300px;
+  width: 202px;
+  height: 192px;
+  padding: 16px 20px;
+  background-image: url(../img/neutrals/craft-4-slots.png);
+  background-repeat: no-repeat;
+}
+
+.craft--6-slots {
+  position: absolute;
+  top: 640px;
+  left: 700px;
+  width: 284px;
+  height: 192px;
+  padding: 16px 20px;
+  background-image: url(../img/neutrals/craft-6-slots.png);
+  background-repeat: no-repeat;
+}
+
+.slot--reciepe {
+  background-image: url(../img/neutrals/slot-intermediate.png);
+}
+
+.slot--done {
+  background-image: url(../img/neutrals/slot-default.png);
+}
+

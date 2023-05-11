@@ -1,0 +1,42 @@
+html, body {
+	margin: 0;
+	padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Hi Melody', cursive;
+    font-size: 14px;
+    background-color: black;
+}
+
+body * {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+main {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: top left;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+main#day {
+    background-image: url(../img/environment/underground.png);
+}
+
+main#night {
+    background-image: url(../img/environment/underground-night.png);
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+    font-weight: normal;
+}
+

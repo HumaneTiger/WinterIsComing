@@ -1,0 +1,162 @@
+.day__objects {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100vw;
+}
+
+.item {
+  position: absolute;
+  cursor: pointer;
+  width: 82px;
+  height: 82px;
+  transition: transform 0.1s ease-in;
+}
+
+.item .shadow {
+  position: absolute;
+  left: 3px;
+  top: 5px;
+  right: 4px;
+  bottom: 5px;
+  border-radius: 15px;
+  z-index: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.2s ease-out;
+}
+
+.item img.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.item * {
+  pointer-events: none;
+}
+
+.item img.icon {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  z-index: 2;
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.item.grabbed {
+ transform: scale(1.1);
+}
+
+.item:hover .shadow {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.item.grabbed .shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.item.flip {
+  opacity: 0;
+  transition: opacity 0.05s ease-out, transform 0.2s ease-out;
+}
+
+.item-branch.flip {
+  transform: translate(-100px, -50px);
+}
+
+.item-log.flip {
+  transform: translate(-70px, -100px);
+}
+
+.item-stones.flip {
+  transform: translate(100px, -90px);
+}
+
+.item-rock.flip {
+  transform: translate(100px, 0px);
+}
+
+.item-fish.flip {
+  transform: translate(150px, 40px);
+}
+
+.item-nails.flip,
+.item-plank.flip,
+.item-wood.flip {
+  transform: translate(-150px, 0px);
+}
+
+
+.building {
+  left: 260px;
+  top: 150px;
+  position: absolute;
+  z-index: 1;
+}
+
+.environment-tall {
+  position: absolute;
+  width: 188px;
+  height: 300px;
+}
+
+.environment-tall .background {
+  position: absolute;
+  left: 9px;
+  bottom: 10px;
+  z-index: 1;
+}
+
+.environment-tall .icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
+.environment-small {
+  position: absolute;
+  width: 220px;
+  height: 200px;
+}
+
+.environment-small .background {
+  position: absolute;
+  left: 24px;
+  bottom: 0;
+  z-index: 1;
+}
+
+.environment-small .icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
+.bush .shadow {
+  position: absolute;
+  left: -62px;
+  z-index: 2;
+  top: 20px;
+}
+
+.tree .shadow {
+  position: absolute;
+  left: -120px;
+  z-index: 2;
+  top: 62px;
+}
+.tree-3 .shadow {
+  left: -140px;
+  top: 44px;
+}
+.name {
+  position: absolute;
+  padding: 2px 4px;
+  background: white;
+  border: 1px black dashed;
+}

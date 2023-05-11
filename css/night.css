@@ -1,0 +1,315 @@
+.fow {
+  position: fixed;
+  z-index: 9;
+  box-shadow: 0 0 0 100vw black;
+  animation: fow 1s infinite;
+  pointer-events: none;
+}
+
+.fow-inner {
+  width: 1200px;
+  height: 1200px;
+  margin: -10px;
+  background-color: black;
+  mask-image: url(../img/night/wof.png);
+  -webkit-mask-image: url(../img/night/wof.png);
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.collision-indicator {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 8;
+  pointer-events: none;
+  background-color: red;
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.collision-indicator.trigger {
+  opacity: 1;
+}
+
+@keyframes fow {
+  0% {transform: rotate(0deg) scale(1); }
+  25% {transform: rotate(3deg) scale(0.99); }
+  50% {transform: rotate(1deg) scale(0.98); }
+  75% {transform: rotate(3deg) scale(0.99); }
+  100% {transform: rotate(0deg) scale(1); }
+}
+
+/*
+===============================================
+*/
+
+#night .hero {
+  transition: opacity 0.5s ease-out;
+  z-index: 2;
+}
+
+#night .hero-victor .icon.christin {
+  display: none;
+}
+
+#night .hero-christin .icon.victor {
+  display: none;
+}
+
+#night .hero.in-cover {
+  z-index: 1;
+  opacity: 0.5;
+}
+
+#night .cover {
+  transition: opacity 0.5s ease-out;
+}
+
+#night .cover.transparent {
+  opacity: 0.5;
+}
+
+/*
+===============================================
+*/
+
+.building-1 {
+  position: absolute;
+  left: 200px;
+  top: 800px;
+  z-index: 2;
+}
+
+.building-1 .left {
+  position: absolute;
+  left: 2px;
+  bottom: 0;
+  z-index: 2;
+}
+
+.building-1 .right {
+  position: absolute;
+  left: 101px;
+  bottom: 0;
+  z-index: 2;
+}
+
+.building-2 {
+  position: absolute;
+  left: 1516px;
+  top: 174px;
+  z-index: 2;
+}
+
+.building-3 {
+  position: absolute;
+  left: 679px;
+  top: 330px;
+  z-index: 2;
+}
+
+.building-4 {
+  position: absolute;
+  left: 1200px;
+  top: 750px;
+  z-index: 2;
+}
+
+.building-5 {
+  position: absolute;
+  left: 800px;
+  top: 333px;
+  z-index: 2;
+}
+
+.building-5 .left {
+  position: absolute;
+  left: 2px;
+  top: -154px;
+  z-index: 2;
+}
+
+.building-5 .right {
+  position: absolute;
+  left: 424px;
+  bottom: 0;
+  z-index: 2;
+}
+
+.building-6 {
+  position: absolute;
+  left: 1444px;
+  top: 523px;
+  z-index: 2;
+}
+
+.building-7 {
+  position: absolute;
+  left: 330px;
+  top: 260px;
+  z-index: 2;
+}
+
+.enemie-1 {
+  position: absolute;
+  left: 1000px;
+  bottom: 100px;
+  animation: downup 9s linear infinite;
+  z-index: 3;
+}
+
+.enemie-2 {
+  position: absolute;
+  left: 100px;
+  bottom: 150px;
+  animation: leftright 9s linear infinite;
+  z-index: 3;
+}
+
+.enemie-3 {
+  position: absolute;
+  left: 1400px;
+  top: 150px;
+  animation: updown 6s linear infinite;
+  z-index: 3;
+}
+
+.enemie-4 {
+  position: absolute;
+  left: 500px;
+  top: 50px;
+  z-index: 3;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(-360deg); }
+}
+@keyframes leftright {
+  0% { transform: translateY(0); }
+  50% { transform:  translateX(480px); }
+  100% { transform: translateY(0); }
+}
+@keyframes updown {
+  0% { transform: translateY(0); }
+  50% { transform:  translateY(480px); }
+  100% { transform: translateY(0); }
+}
+@keyframes downup {
+  0% { transform: translateY(0); }
+  50% { transform:  translateY(-530px); }
+  100% { transform: translateY(0); }
+}
+
+#night .radar {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: -150px;
+  top: -150px;
+  animation: rotate 30s linear infinite;
+}
+
+#night .loot {
+  position: absolute;
+  left: 1750px;
+  top: 400px;
+  z-index: 1;
+}
+
+#night .go-home {
+  position: absolute;
+  left: 40px;
+  top: 275px;
+}
+
+#night .item {
+  z-index: 0;
+}
+/*
+===============================================
+*/
+
+.switch__dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: opacity 2s ease-out;
+  z-index: 210;
+}
+
+.switch__dialog {
+  background: black;
+  color: white;
+}
+
+.switch__dialog .wrapper {
+  position: absolute;
+  width: 80vw;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -60%);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-out 2s;
+}
+
+.switch__dialog {
+  font-size: 50px;
+}
+
+.switch__dialog .characters {
+  margin: 60px 0 20px;
+}
+
+.switch__dialog .characters img {
+  margin: 0 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+
+.switch__dialog a {
+  color: white;
+  cursor: pointer;
+}
+
+.switch__dialog .switch__options a {
+  display: inline-block;
+  margin: 0 30px;
+  transition: font-size 0.2s ease-out;
+}
+
+.switch__dialog .switch__options a:hover {
+  font-size: 2em;
+}
+
+.switch__dialog .characters img:hover {
+  transform: scale(1.1);
+}
+
+.switch__dialog p {
+  margin: 0;
+}
+
+.switch__dialog.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.switch__dialog.active .wrapper {
+  opacity: 1;
+}
+
+#tutorial p {
+  font-size: 48px;
+}

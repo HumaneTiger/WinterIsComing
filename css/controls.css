@@ -1,0 +1,207 @@
+.equipment {
+  position: fixed;
+  left: 1650px;
+  top: -50px;
+  width: 211px;
+  height: 600px;
+  background-image: url(../img/controls/equipment-1.png);
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+.equipment:hover {
+  z-index: 1;
+}
+
+.equipment__slot {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+}
+
+.equipment__owner {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  left: 46px;
+  top: 230px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.equipment__owner.owner-victor {
+  background-image: url(../img/heros/victor.png);
+}
+
+.equipment__owner.owner-christin {
+  background-image: url(../img/heros/christin.png);
+}
+
+.equipment__slot.slot-back {
+  left: 65px;
+  top: 340px;
+}
+
+.equipment__slot.slot-left {
+  left: 20px;
+  top: 422px;  
+}
+
+.equipment__slot.slot-right {
+  left: 112px;
+  top: 422px;    
+}
+
+.equipment__slot.slot-pocket {
+  left: 65px;
+  top: 504px;  
+}
+
+.inventar {
+  position: absolute;
+  left: 690px;
+  bottom: 50px;
+  width: 540px;
+  height: 104px;
+  background-image: url(../img/controls/inventar-1.png);
+  background-repeat: no-repeat;
+  padding: 13px 0 0 18px;
+  z-index: 2;
+}
+
+.inventar:hover {
+  z-index: 1;
+}
+.inventar__slot {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  margin-right: 5px;
+  background-repeat: no-repeat;
+}
+
+.slot-inv1 { left: 20px; }
+.slot-inv2 { left: 105px; }
+.slot-inv3 { left: 190px; }
+.slot-inv4 { left: 275px; }
+.slot-inv5 { left: 360px; }
+.slot-inv6 { left: 445px; }
+
+.slot--empty,
+.slot--default {
+  background-image: url(../img/neutrals/slot-default.png);
+}
+
+.slot--full {
+  background-image: url(../img/neutrals/slot-intermediate.png);
+}
+
+.slot--unknown {
+  background-image: url(../img/neutrals/slot-unknown.png);
+}
+
+.slot--locked {
+  background-image: url(../img/neutrals/slot-locked.png);
+}
+
+.slot__text {
+  font-family: 'Hi Melody', cursive;
+  font-size: 26px;
+  line-height: 0.8em;
+  margin: 55% 0 0;
+  padding: 0;
+  text-align: center;
+  transform: translateY(-50%);
+  vertical-align: center;
+}
+/*
+.slot--unknown .slot__text {
+  font-size: 4px;
+  font-weight: bold;
+}*/
+
+.winning__label {
+  font-size: 24px;
+  padding-left: 0.8em;
+  padding-top: 0.42em;
+}
+
+.progress__bar {
+  background-image: url(../img/controls/progress-bg.png);
+  background-repeat: repeat-x;
+  border-right: 2px black solid;
+  border-radius: 3px;
+  height: 15px;
+}
+
+.winning__progress {
+  position: absolute;
+  left: 160px;
+  top: 14px;
+  bottom: 14px;
+  right: 20px;
+  border: 2px black solid;
+  border-radius: 3px;
+}
+
+.winning__time {
+  position: fixed;
+  top: 14px;
+  left: 30%;
+  transform: translate(-50%);
+  width: 153px;
+  height: 47px;
+  background-image: url(../img/controls/time.png);
+  background-repeat: no-repeat;
+  z-index: 11;
+}
+.winning__time .time__progress {
+  position: absolute;
+  font-size: 24px;
+  right: 0.8em;
+  top: 0.42em;
+}
+
+.winning__winter {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 544px;
+  height: 47px;
+  background-image: url(../img/controls/winter.png);
+  background-repeat: no-repeat;
+  z-index: 11;
+}
+.winning__winter .progress__bar {
+  width: 0%;
+}
+
+.winning__building {
+  position: fixed;
+  bottom: 20px;
+  left: 5%;
+  width: 352px;
+  height: 47px;
+  background-image: url(../img/controls/buildings.png);
+  background-repeat: no-repeat;
+  z-index: 11;
+}
+.winning__building .progress__bar {
+  width: 0%;
+}
+
+.winning__stockpile {
+  position: fixed;
+  bottom: 20px;
+  right: 5%;
+  width: 352px;
+  height: 47px;
+  background-image: url(../img/controls/stockpile.png);
+  background-repeat: no-repeat;
+  z-index: 11;
+}
+.winning__stockpile .progress__bar {
+  width: 0%;
+}

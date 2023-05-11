@@ -1,0 +1,106 @@
+.hero {
+  cursor: pointer;
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  transition: transform 0.2s ease-out;
+}
+
+.hero * {
+  pointer-events: none;
+}
+
+.hero .shadow {
+  position: absolute;
+  left: 9px;
+  top: 9px;
+  right: 9px;
+  bottom: 6px;
+  border-radius: 50%;
+  z-index: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.2s ease-out;
+}
+
+.hero img.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.hero img.icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.hero:hover .shadow {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.hero.grabbed {
+  transform: translateY(-5px);
+}
+
+.hero.grabbed .shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.hero .activity {
+  position: relative;
+  border: 2px black solid;
+  background-color: white;
+  position: absolute;
+  bottom: -22px;
+  left: 19px;
+  width: 80px;
+  padding: 0 4px 0;
+  text-align: center;
+  z-index: 3;
+}
+.hero:not(.active) .activity {
+  display: none;
+}
+.hero .activity .text {
+  font-size: 16px;
+  line-height: 1em;
+}
+
+.hero .activity .progress {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: black;
+  bottom: 2px;
+  width: 0;
+}
+
+.hero .bubble {
+  position: absolute;
+  width: 243px;
+  height: 91px;
+  left: 75px;
+  top: 5px;
+  background-image: url(../img/neutrals/speech-bubble.png);
+  background-repeat: no-repeat;
+  z-index: 4;
+}
+
+.hero .bubble .text {
+  position: absolute;
+  right: 11px;
+  top: 18px;
+  width: 200px;
+  font-size: 29px;
+  padding: 0 4px 0;
+  text-align: center;
+  line-height: 0.9em;
+}
+
+.hero .bubble .text.small {
+  font-size: 25px;
+  line-height: 0.9em;
+  top: 10px;
+}
